@@ -1,8 +1,14 @@
 import os
-from project import application, db
+from flask import Flask
 
-with application.app_context():
-    db.create_all()
+application = Flask(__name__)
 
-if __name__=='__main__':
-    application.run(debug=True, host="0.0.0.0", port=int(os.envion.get("PORT",8080)))
+@application.route("/")
+def test_env_variable():
+    return os.environ.get("AWS_DATABASE_URL")
+
+#with application.app_context():
+#    db.create_all()
+
+#if __name__=='__main__':
+#    application.run(debug=True, host="0.0.0.0", port=int(os.envion.get("PORT",8080)))

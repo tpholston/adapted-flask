@@ -1,6 +1,8 @@
-from flask import Flask, jsonify
-application = Flask(__name__)
+import os
+from project import application, db
 
-@application.route("/")
-def hello_world():
-    return jsonify({"message": "Hello, World!"})
+with application.app_context():
+    db.create_all()
+
+if __name__=='__main__':
+    application.run(debug=True, host="0.0.0.0", port=int(os.envion.get("PORT",8080)))

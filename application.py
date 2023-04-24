@@ -5,7 +5,7 @@ application = Flask(__name__)
 
 @application.route("/")
 def test_env_variable():
-    return os.environ.get("AWS_DATABASE_URL")
+    return "Hello World"
 
 #with application.app_context():
 #    db.create_all()
